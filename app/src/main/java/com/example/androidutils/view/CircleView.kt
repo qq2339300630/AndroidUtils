@@ -6,13 +6,22 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.example.androidutils.R
+import androidx.core.content.withStyledAttributes
 
 class CircleView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet) :
     View(context, attributeSet, 0) {
+    var mColor = Color.RED
+
     val mPaint = Paint()
     init {
-        mPaint.setColor(Color.RED)
+        context.withStyledAttributes(attributeSet, R.styleable.CircleView) {
+            mColor = getColor(R.styleable.CircleView_circleColor, mColor)
+            mPaint.setColor(mColor)
+        }
     }
+
+
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         // super 中兼容了EXACTLY
