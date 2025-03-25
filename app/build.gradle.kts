@@ -50,4 +50,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.baserecyclerviewadapterhelper4)
+    implementation(libs.utilcodex)
+
+    implementation(libs.okhttp3.okhttp)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    implementation(libs.retrofit)
 }

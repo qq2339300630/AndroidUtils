@@ -1,14 +1,18 @@
 package com.example.androidutils
 
-import android.os.Bundle
+
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.androidutils.base.BaseActivity
+import com.example.androidutils.databinding.ActivityCircleViewBinding
 
-class CircleViewActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class CircleViewActivity : BaseActivity<ActivityCircleViewBinding>() {
+    override fun initViewBinding(): ActivityCircleViewBinding {
+        return ActivityCircleViewBinding.inflate(layoutInflater)
+    }
+
+    override fun initView() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_circle_view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -16,5 +20,9 @@ class CircleViewActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    override fun initData() {
+
     }
 }

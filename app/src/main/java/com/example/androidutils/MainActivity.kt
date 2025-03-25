@@ -8,15 +8,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidutils.adapter.TypeAdapter
+import com.example.androidutils.base.BaseActivity
 import com.example.androidutils.databinding.ActivityMainBinding
 import com.example.androidutils.model.Type
 
-class MainActivity : AppCompatActivity() {
-    lateinit var mBinding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override fun initViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
+    override fun initView() {
         enableEdgeToEdge()
         setContentView(mBinding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -37,5 +38,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun initData() {
+
     }
 }
